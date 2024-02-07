@@ -61,7 +61,7 @@ exports.login = async (req, res) => {
      return res.status(403).json({message : 'No user found for the given email.'})
     }
     const userDetails = existingUserDetails.userDetails[0];
-    const userId = existingUserDetails.totalUsers[0].user_count + 1;
+    const userId = existingUserDetails.totalUsers[0].user_count;
 
     //Comparing the user input password with password in DB.
     if(bcrypt.compareSync(password, userDetails.password))
