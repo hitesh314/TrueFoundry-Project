@@ -3,9 +3,13 @@ const bodyParser = require('body-parser');
 const chatGptRoutes = require('./Routes/chatGptRoutes');
 const userAuthenticateRoutes = require('./Routes/userAuthenticateRoutes');
 const userRequestsRoutes = require('./Routes/promptHistoryRoutes');
+const cors = require('cors');
 
 //creating our express app.
 const app = express();
+
+//allowing other users to interact with our service
+app.use(cors());
 
 //defining the port.
 const PORT = 3001;
