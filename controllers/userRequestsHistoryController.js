@@ -9,18 +9,15 @@ exports.getUserHistory = async (req, res) => {
     
     //Creating a hash value for the password.
     const existingUserDetails = await getUserModel.getUserDetailsById(userId);
-    console.log(existingUserDetails);
-
     if(existingUserDetails.userDetails.length == 0)
     {
       return res.status(403).json({message : 'No user found for the given email.'})
     }
-
+    //Getting the user prompt requests history.
     const getUserRequestsHistory = await getUserPromptsModel.getUserPromptsRequests(userId, timePeriod);
     res.status(201).json({result : getUserRequestsHistory.userDetails});
   }
   catch(error){
-    console.log(error);
     res.status(403).json({message : "User Authentication error"});
   }
 }

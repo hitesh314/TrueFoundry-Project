@@ -22,10 +22,8 @@ exports.getUserDetails = async (parameters) => {
               else resolve(result);
           });
       });
-        console.log(userDetails);
         return {userDetails, totalUsers}; 
     } catch (error) {
-        console.error("Error executing query:", error);
         throw error; 
     }
 }

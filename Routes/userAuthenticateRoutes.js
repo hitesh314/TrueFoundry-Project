@@ -6,8 +6,8 @@ const userAuthentication = require('../controllers/UserAuthenticationController'
 router.post('/register',
     userAuthentication.register);
 
-//sending login request to controllers.UserAuthenticationController.register.
+//sending login request to controllers.UserAuthenticationController.login.
 router.post('/login',
-userAuthentication.login);
+    userAuthentication.login);
     
 module.exports = router;

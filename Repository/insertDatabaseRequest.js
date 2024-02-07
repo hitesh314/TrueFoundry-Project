@@ -7,9 +7,9 @@ exports.insertUserRequest = (parameters) => {
 
   client.query(query, (err, result) => {
     if (err) {
-      console.error('Error executing query:', err);
+      throw err;
     } else {
-      console.log('Query result:', result);
+      return;
     }
   });
 }

@@ -10,7 +10,8 @@ const app = express();
 //defining the port.
 const PORT = 3001;
 
-app.listen(PORT, console.log("Server has strated at PORT :" + PORT));
+//listening the port.
+app.listen(PORT);
 
 //Defining body parsing for transervering json form data,
 app.use(bodyParser.json());

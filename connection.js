@@ -3,10 +3,10 @@ require("dotenv").config();
 
 const clickhouse = new ClickHouse({
     url: process.env.CLICKHOUSE_URL,
-    port: 8443, // Default ClickHouse port
+    port: 8443, 
     username: process.env.CLICKHOUSE_USERNAME,
     password: process.env.CLICKHOUSE_PASSWORD,
-    basicAuth: null, // Or use basicAuth for HTTP authentication
+    basicAuth: null, 
     isUseGzip: true,
     format: "json",
     raw: false,
@@ -17,5 +17,3 @@ const clickhouse = new ClickHouse({
 });
 
 module.exports = clickhouse;
-
-// const rows = [];rows.push(row);

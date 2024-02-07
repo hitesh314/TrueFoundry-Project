@@ -1,6 +1,6 @@
 const chatgptConstants = require('../Constants/chatGptConstants');
 const axios = require('axios');
-const insertRequestModel = require('../Model/insertUserModel');
+const insertRequestModel = require('../Model/addUserRequestsModel');
 require("dotenv").config(); 
 
 //Function to handle the input requests for getting chat gpt responses.
@@ -8,13 +8,14 @@ exports.request = async (req, res) => {
   try { 
     const startTime = new Date();
     const {promptMessage, userId} = req.body;
+    //Getting the respones from chatGpt.
     const chatGptResponse = await getChatGptResponse(promptMessage);
+    //Storing the chatGpt output we received.
     insertRequestModel.insertUserRequest(chatGptResponse, userId, promptMessage, startTime.getTime());
-
+    //Scenerio : Success output.
     res.status(chatGptResponse.statusCode).json({ result : chatGptResponse.response });
 	}
   catch (err) { 
-    console.log(err);
     res.status(err.status || 500).json({
       error: {
         message: err.message,
@@ -49,7 +50,6 @@ const getChatGptResponse = async (promptMessage) => {
   }
   catch(error)
   {
-    console.log(error);
     var result = {
       response : error.response.statusText,
       promptTokens : 0,
